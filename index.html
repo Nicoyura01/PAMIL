@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PAMIL - Productos de Limpieza</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    <script src="https://unpkg.com/feather-icons"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: rgba(240, 253, 250, 0.3);
+        }
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+        .price-badge {
+            display: none;
+        }
+        :root {
+            --teal-50: #f0fdfa;
+            --teal-100: #ccfbf1;
+            --teal-200: #99f6e4;
+            --teal-300: #5eead4;
+            --teal-400: #2dd4bf;
+            --teal-500: #14b8a6;
+            --teal-600: #0d9488;
+            --teal-700: #0f766e;
+            --teal-800: #115e59;
+            --teal-900: #134e4a;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Header -->
+    <header class="bg-teal-500 text-white shadow-lg">
+        <div class="container mx-auto px-4 py-6">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center space-x-2">
+                    <i data-feather="droplet" class="w-8 h-8"></i>
+                    <h1 class="text-2xl font-bold">PAMIL</h1>
+                </div>
+                <div class="hidden md:flex space-x-6">
+                    <a href="#products" class="hover:text-teal-200 transition">Productos</a>
+                    <a href="#about" class="hover:text-teal-200 transition">Quiénes somos</a>
+                    <a href="#how-to" class="hover:text-teal-200 transition">Cómo comprar</a>
+                    <a href="#contact" class="hover:text-teal-200 transition">Contacto</a>
+                </div>
+                <button class="md:hidden" id="menu-toggle">
+                    <i data-feather="menu" class="w-6 h-6"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden bg-teal-700 text-white py-4 px-4 md:hidden">
+        <div class="flex flex-col space-y-3">
+            <a href="#products" class="hover:text-blue-200 transition">Productos</a>
+            <a href="#about" class="hover:text-blue-200 transition">Quiénes somos</a>
+            <a href="#how-to" class="hover:text-blue-200 transition">Cómo comprar</a>
+            <a href="#contact" class="hover:text-blue-200 transition">Contacto</a>
+        </div>
+    </div>
+
+    <!-- How To Section -->
+    <section id="how-to" class="py-16 bg-teal-500 text-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-8">✨ ¿Cómo adquirir los mejores productos PAMIL?  ✨</h2>
+            <p class="text-center mb-8 text-teal-100">El proceso más fácil y rápido para limpieza de primera</p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+                <div class="bg-teal-100/30 p-6 rounded-lg backdrop-blur-sm text-center border border-teal-200/30" data-aos="fade-up">
+                    <div class="bg-teal-200/40 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i data-feather="heart" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">1. Elige con el  ❤️</h3>
+                    <p>Selecciona tus productos favoritos de nuestra gama premium</p>
+                </div>
+                
+                <div class="bg-teal-100/30 p-6 rounded-lg backdrop-blur-sm text-center border border-teal-200/30" data-aos="fade-up" data-aos-delay="100">
+                    <div class="bg-teal-200/40 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i data-feather="smartphone" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">2. WhatsApp en 1️⃣ clic</h3>
+                    <p>Envía tu pedido directamente por WhatsApp con solo un botón</p>
+                </div>
+                
+                <div class="bg-teal-100/30 p-6 rounded-lg backdrop-blur-sm text-center border border-teal-200/30" data-aos="fade-up" data-aos-delay="200">
+                    <div class="bg-teal-200/40 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i data-feather="award" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">3. Recibe calidad  ⭐⭐⭐⭐⭐</h3>
+                    <p>Disfruta en casa de productos hechos con estándares profesionales</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Hero Section -->
+    <section class="bg-gradient-to-b from-teal-100/70 to-white text-teal-800 py-16">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-4xl font-bold mb-4 text-teal-700" data-aos="fade-up">Productos de Limpieza de Calidad</h2>
+            <p class="text-xl mb-8 max-w-2xl mx-auto text-teal-600 aos-init hovered-element aos-animate" data-aos="fade-up" data-aos-delay="100">
+                Descubre la diferencia de limpiar con productos hechos por ingenieras: máxima eficiencia, cuidado para tus manos y aromas irresistibles. ¡Tu hogar merece lo mejor!
+            </p>
+            <a href="#products" class="bg-teal-500 hover:bg-teal-600 text-white font-semibold px-6 py-3 rounded-full shadow-lg transition inline-block" data-aos="fade-up" data-aos-delay="200">
+                Ver Productos
+            </a>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section id="products" class="py-16 bg-teal-50/5">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12 text-teal-600">Nuestros Productos</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Product 1 -->
+                <div class="product-card bg-teal-50/10 rounded-lg shadow-md overflow-hidden relative transition duration-300" data-aos="fade-up">
+                    <div class="price-badge text-xs font-bold">
+                        <div class="flex flex-col items-center">
+                            <span>12 Bs/L</span>
+                            <span class="text-xs">10 Bs +5L</span>
+                        </div>
+                    </div>
+                    <img src="https://huggingface.co/spaces/nicoyura/pamil/resolve/main/images/jabol liquido.jpg" alt="Persona lavándose las manos" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2 text-teal-600">Jabón Líquido de Mano</h3>
+                        <p class="text-gray-600 mb-4">Suave con la piel, elimina bacterias y deja un agradable aroma.</p>
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center">
+                                <button class="quantity-btn bg-gray-200 px-3 py-1 rounded-l" onclick="decrement('handsoap')">-</button>
+                                <input type="number" id="handsoap" min="0" value="0" class="w-12 text-center border-t border-b border-gray-300 py-1">
+                                <button class="quantity-btn bg-gray-200 px-3 py-1 rounded-r" onclick="increment('handsoap')">+</button>
+                                <span class="ml-2 text-sm font-medium text-teal-600">Litros</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 2 -->
+                <div class="product-card bg-teal-50/10 rounded-lg shadow-md overflow-hidden relative transition duration-300" data-aos="fade-up" data-aos-delay="100">
+                    <div class="price-badge text-xs font-bold">
+                        <div class="flex flex-col items-center">
+                            <span>12 Bs/L</span>
+                            <span class="text-xs">10 Bs +5L</span>
+                        </div>
+                    </div>
+                    <img src="https://huggingface.co/spaces/nicoyura/pamil/resolve/main/images/lavavajillas.jpg" alt="Lavavajillas" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2 text-teal-600">Lavavajillas</h3>
+                        <p class="text-gray-600 mb-4">Elimina grasa fácilmente, ideal para vajillas y utensilios de cocina.</p>
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center">
+                                <button class="quantity-btn bg-gray-200 px-3 py-1 rounded-l" onclick="decrement('dishsoap')">-</button>
+                                <input type="number" id="dishsoap" min="0" value="0" class="w-12 text-center border-t border-b border-gray-300 py-1">
+                                <button class="quantity-btn bg-gray-200 px-3 py-1 rounded-r" onclick="increment('dishsoap')">+</button>
+                                <span class="ml-2 text-sm font-medium text-teal-600">Litros</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 3 -->
+                <div class="product-card bg-teal-50/10 rounded-lg shadow-md overflow-hidden relative transition duration-300" data-aos="fade-up" data-aos-delay="200">
+                    <div class="price-badge text-xs font-bold">
+                        <div class="flex flex-col items-center">
+                            <span>12 Bs/L</span>
+                            <span class="text-xs">10 Bs +5L</span>
+                        </div>
+                    </div>
+                    <img src="https://huggingface.co/spaces/nicoyura/pamil/resolve/main/images/limpia%20pisos.avif" alt="Limpia Pisos" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2 text-teal-600">Limpia Pisos</h3>
+                        <p class="text-gray-600 mb-4">Desinfecta y deja tus pisos brillantes con un aroma fresco.</p>
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center">
+                                <button class="quantity-btn bg-gray-200 px-3 py-1 rounded-l" onclick="decrement('floorcleaner')">-</button>
+                                <input type="number" id="floorcleaner" min="0" value="0" class="w-12 text-center border-t border-b border-gray-300 py-1">
+                                <button class="quantity-btn bg-gray-200 px-3 py-1 rounded-r" onclick="increment('floorcleaner')">+</button>
+                                <span class="ml-2 text-sm font-medium text-teal-600">Litros</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Order Summary -->
+            <div class="mt-12 bg-teal-100/20 border border-teal-200/40 rounded-lg p-6 max-w-2xl mx-auto shadow-sm" data-aos="fade-up">
+                <div class="bg-teal-500 text-white rounded-lg p-4 mb-6 text-center">
+                    <h3 class="text-lg font-bold">PRECIOS ESPECIALES</h3>
+                    <p class="text-sm">12 Bs por litro • 10 Bs por litro en compras mayores a 5 litros</p>
+                </div>
+                <h3 class="text-xl font-semibold mb-4 text-gray-800">Resumen de tu Pedido</h3>
+                <div id="order-summary" class="mb-4">
+                    <p class="text-gray-600">Selecciona los productos que deseas</p>
+                </div>
+                <div class="flex flex-col sm:flex-row justify-between items-center">
+                    <div class="mb-4 sm:mb-0">
+                        <h4 class="font-semibold text-gray-800">Total: <span id="total-amount">0</span> Bs</h4>
+                    </div>
+                    <button onclick="sendOrder()" class="bg-teal-500 hover:bg-teal-600 text-white font-semibold px-6 py-3 rounded-full shadow-lg transition flex items-center">
+                        <i data-feather="shopping-cart" class="mr-2"></i> Enviar Pedido por WhatsApp
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Us Section -->
+    <section id="about" class="py-16 bg-teal-50/10">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12 text-teal-600">¡Conoce a las PAMIL Girls!</h2>
+            
+            <div class="flex flex-col md:flex-row items-center gap-8 max-w-4xl mx-auto" data-aos="fade-up">
+                <div class="w-full md:w-1/2">
+                    <img src="https://huggingface.co/spaces/nicoyura/pamil/resolve/main/images/pao%20y%20mile.jpg" alt="Las PAMIL Girls" class="rounded-lg shadow-lg w-full">
+                </div>
+                <div class="w-full md:w-1/2">
+                    <div class="bg-white/80 backdrop-blur-sm p-6 rounded-lg shadow-md">
+                        <h3 class="text-2xl font-bold mb-4 text-teal-600">Dos ingenieras, una gran aventura</h3>
+                        <p class="text-gray-700 mb-4">Somos dos mejores amigas, recién egresadas de ingeniería (¡una química y otra industrial!) que decidimos mezclar nuestros conocimientos para crear productos de limpieza increíbles.</p>
+                        <p class="text-gray-700 mb-4">Con fórmulas científicas pero con mucho corazón, cada producto PAMIL está hecho con el mismo cariño que ponemos en nuestra amistad.</p>
+                        <div class="flex items-center space-x-4 mt-6">
+                            <div class="bg-teal-100 p-3 rounded-full">
+                                <i data-feather="flask" class="text-teal-600"></i>
+                            </div>
+                            <p class="text-sm text-gray-600">Precisión química + Eficiencia industrial = 💯</p>
+                        </div>
+                        <div class="flex items-center space-x-4 mt-4">
+                            <div class="bg-teal-100 p-3 rounded-full">
+                                <i data-feather="heart" class="text-teal-600"></i>
+                            </div>
+                            <p class="text-sm text-gray-600">Hecho con amor y fórmulas probadas en nuestros propios hogares</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-16 bg-teal-50/5">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12 text-teal-600">Contacto</h2>
+            
+            <div class="max-w-2xl mx-auto bg-teal-100/30 rounded-lg p-8 border border-teal-200/30 shadow-sm">
+                <div class="flex flex-col md:flex-row items-center justify-between mb-8">
+                    <div class="flex flex-col space-y-4 mb-4 md:mb-0">
+                        <div class="flex items-center">
+                            <div class="bg-teal-200 p-3 rounded-full mr-4">
+                                <i data-feather="phone" class="text-teal-600"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold text-gray-800">Teléfonos / WhatsApp</h3>
+                                <p class="text-gray-600">+591 69523269</p>
+                                <p class="text-gray-600">+591 75907657</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex flex-col space-y-4">
+                        <a href="https://wa.me/59169523269" class="bg-green-500 hover:bg-green-600 text-white font-semibold px-6 py-3 rounded-full shadow-lg transition flex items-center justify-center">
+                            <i data-feather="message-circle" class="mr-2"></i> Escríbenos al 69523269
+                        </a>
+                        <a href="https://wa.me/59175907657" class="bg-green-500 hover:bg-green-600 text-white font-semibold px-6 py-3 rounded-full shadow-lg transition flex items-center justify-center">
+                            <i data-feather="message-circle" class="mr-2"></i> Escríbenos al 75907657
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="flex items-center">
+                    <div class="bg-blue-100 p-3 rounded-full mr-4">
+                        <i data-feather="map-pin" class="text-blue-600"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-semibold text-gray-800">Ubicación</h3>
+                        <p class="text-gray-600">Cochabamba, Bolivia</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="flex items-center mb-4 md:mb-0">
+                    <i data-feather="droplet" class="w-6 h-6 mr-2"></i>
+                    <span class="text-xl font-bold">PAMIL</span>
+                </div>
+                <div class="text-sm text-gray-400">
+                    &copy; 2025 PAMIL - Productos de Limpieza. Todos los derechos reservados.
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Initialize AOS and Feather Icons
+        AOS.init();
+        feather.replace();
+        // Mobile menu toggle
+        document.getElementById('menu-toggle').addEventListener('click', function() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        });
+        // Quantity controls
+        function increment(id) {
+            const input = document.getElementById(id);
+            input.value = parseInt(input.value) + 1;
+            updateOrderSummary();
+        }
+        function decrement(id) {
+            const input = document.getElementById(id);
+            if (parseInt(input.value) > 0) {
+                input.value = parseInt(input.value) - 1;
+                updateOrderSummary();
+            }
+        }
+        // Update order summary
+        function updateOrderSummary() {
+            const products = [
+                { id: 'handsoap', name: 'Jabón Líquido de Mano', price: 12, bulkPrice: 10, bulkThreshold: 5 },
+                { id: 'dishsoap', name: 'Lavavajillas', price: 12, bulkPrice: 10, bulkThreshold: 5 },
+                { id: 'floorcleaner', name: 'Limpia Pisos', price: 12, bulkPrice: 10, bulkThreshold: 5 }
+            ];
+            let summaryHTML = '';
+            let total = 0;
+            products.forEach(product => {
+                const quantity = parseInt(document.getElementById(product.id).value);
+                if (quantity > 0) {
+                    const pricePerLiter = quantity >= product.bulkThreshold ? product.bulkPrice : product.price;
+                    const subtotal = quantity * pricePerLiter;
+                    total += subtotal;
+                    summaryHTML += `
+                        <div class="flex justify-between py-2 border-b border-gray-200">
+                            <span>${product.name} (${quantity}L)</span>
+                            <span>${subtotal} Bs</span>
+                        </div>
+                    `;
+                }
+            });
+            if (summaryHTML === '') {
+                summaryHTML = '<p class="text-gray-600">Selecciona los productos que deseas</p>';
+            }
+            document.getElementById('order-summary').innerHTML = summaryHTML;
+            document.getElementById('total-amount').textContent = total;
+        }
+        // Send order via WhatsApp
+        function sendOrder() {
+            const products = [
+                { id: 'handsoap', name: 'Jabón Líquido de Mano' },
+                { id: 'dishsoap', name: 'Lavavajillas' },
+                { id: 'floorcleaner', name: 'Limpia Pisos' }
+            ];
+            let message = '¡Hola PAMIL! Quiero hacer el siguiente pedido:\n\n';
+            let hasProducts = false;
+            products.forEach(product => {
+                const quantity = parseInt(document.getElementById(product.id).value);
+                if (quantity > 0) {
+                    hasProducts = true;
+                    message += `- ${product.name}: ${quantity} litros\n`;
+                }
+            });
+            if (!hasProducts) {
+                alert('Por favor selecciona al menos un producto');
+                return;
+            }
+            message += '\nPor favor contáctenme para coordinar la entrega. ¡Gracias!';
+            
+            const sendWithNumber = (phone) => {
+                window.open(`https://wa.me/${phone}?text=${encodeURIComponent(message)}`, '_blank');
+                modal.remove();
+            };
+            
+            const modal = document.createElement('div');
+            modal.className = 'fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50';
+            modal.innerHTML = `
+                <div class="bg-white rounded-lg p-6 max-w-sm w-full">
+                    <h3 class="text-xl font-semibold mb-4">Selecciona un número para contactar</h3>
+                    <div class="space-y-3">
+                        <button onclick="sendWithNumber('59169523269')" 
+                                class="w-full bg-green-500 hover:bg-green-600 text-white font-semibold px-4 py-2 rounded-full transition">
+                            Enviar a 69523269
+                        </button>
+                        <button onclick="sendWithNumber('59175907657')" 
+                                class="w-full bg-green-500 hover:bg-green-600 text-white font-semibold px-4 py-2 rounded-full transition">
+                            Enviar a 75907657
+                        </button>
+                        <button onclick="this.parentNode.parentNode.parentNode.remove()" 
+                                class="w-full bg-teal-200 hover:bg-teal-300 text-teal-800 font-semibold px-4 py-2 rounded-full transition">
+                            Cancelar
+                        </button>
+                    </div>
+                </div>
+            `;
+            document.body.appendChild(modal);
+        }
+        // Update summary when quantity changes
+        document.querySelectorAll('input[type="number"]').forEach(input => {
+            input.addEventListener('change', updateOrderSummary);
+        });
+    </script>
+</body>
+</html>
