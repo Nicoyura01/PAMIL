@@ -40,7 +40,7 @@
 </head>
 <body class="bg-gray-50">
     <!-- Header -->
-    <header class="bg-teal-500 text-white shadow-lg">
+    <header class="bg-teal-500 text-white shadow-lg fixed top-0 left-0 right-0 z-50">
         <div class="container mx-auto px-4 py-6">
             <div class="flex justify-between items-center">
                 <div class="flex items-center space-x-2">
@@ -61,19 +61,20 @@
     </header>
 
     <!-- Mobile Menu -->
-    <div id="mobile-menu" class="hidden bg-teal-700 text-white py-4 px-4 md:hidden">
+    <div id="mobile-menu" class="hidden bg-teal-700 text-white py-4 px-4 md:hidden fixed top-16 left-0 right-0 z-50">
         <div class="flex flex-col space-y-3">
             <a href="#products" class="hover:text-blue-200 transition">Productos</a>
             <a href="#about" class="hover:text-blue-200 transition">Quiénes somos</a>
             <a href="#how-to" class="hover:text-blue-200 transition">Cómo comprar</a>
+            <a href="#faq" class="hover:text-blue-200 transition">FAQ</a>
             <a href="#contact" class="hover:text-blue-200 transition">Contacto</a>
         </div>
     </div>
 
     <!-- How To Section -->
-    <section id="how-to" class="py-16 bg-teal-500 text-white">
+    <section id="how-to" class="py-16 bg-teal-500 text-white mt-16">
         <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-bold text-center mb-8"> ¿Cómo adquirir los mejores productos PAMIL?  </h2>
+            <h2 class="text-3xl font-bold text-center mb-8">✨ ¿Cómo adquirir los mejores productos PAMIL?  ✨</h2>
             <p class="text-center mb-8 text-teal-100">El proceso más fácil y rápido para limpieza de primera</p>
             
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
@@ -105,7 +106,7 @@
     </section>
 
     <!-- Hero Section -->
-    <section class="bg-gradient-to-b from-teal-100/70 to-white text-teal-800 py-16">
+    <section class="bg-gradient-to-b from-teal-100/70 to-white text-teal-800 py-16 mt-16">
         <div class="container mx-auto px-4 text-center">
             <h2 class="text-4xl font-bold mb-4 text-teal-700" data-aos="fade-up">Productos de Limpieza de Calidad</h2>
             <p class="text-xl mb-8 max-w-2xl mx-auto text-teal-600 aos-init hovered-element aos-animate" data-aos="fade-up" data-aos-delay="100">
@@ -248,6 +249,40 @@
     </section>
 
 
+    <!-- FAQ Section -->
+    <section id="faq" class="py-16 bg-teal-100/10">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12 text-teal-600">Preguntas Frecuentes</h2>
+            
+            <div class="max-w-3xl mx-auto space-y-6">
+                <div class="bg-white/80 backdrop-blur-sm p-6 rounded-lg shadow-md" data-aos="fade-up">
+                    <h3 class="text-xl font-semibold mb-2 text-teal-600">¿Los productos son seguros para la piel y el hogar?</h3>
+                    <p class="text-gray-700">Sí, todas nuestras fórmulas han sido desarrolladas por ingenieras químicas, cuidando la eficacia en limpieza y la seguridad en el uso diario. Son aptos para superficies de cocina, baños y pisos.</p>
+                </div>
+
+                <div class="bg-white/80 backdrop-blur-sm p-6 rounded-lg shadow-md" data-aos="fade-up" data-aos-delay="100">
+                    <h3 class="text-xl font-semibold mb-2 text-teal-600">¿Puedo comprar en cantidades mayores o por mayor?</h3>
+                    <p class="text-gray-700">¡Claro que sí! Ofrecemos precios especiales para compras a partir de 5 litros o pedidos recurrentes. Escríbenos por WhatsApp para recibir tu cotización personalizada.</p>
+                </div>
+
+                <div class="bg-white/80 backdrop-blur-sm p-6 rounded-lg shadow-md" data-aos="fade-up" data-aos-delay="200">
+                    <h3 class="text-xl font-semibold mb-2 text-teal-600">¿Cómo puedo realizar un pedido?</h3>
+                    <p class="text-gray-700">Puedes contactarnos directamente por WhatsApp desde esta página, indicar qué productos y cantidades necesitas, y coordinaremos el método de entrega o retiro.</p>
+                </div>
+
+                <div class="bg-white/80 backdrop-blur-sm p-6 rounded-lg shadow-md" data-aos="fade-up" data-aos-delay="300">
+                    <h3 class="text-xl font-semibold mb-2 text-teal-600">¿Hacen entregas a domicilio?</h3>
+                    <p class="text-gray-700">Sí, contamos con servicio de delivery en Cochabamba con un costo accesible. También puedes pasar a recoger tu pedido en nuestro punto de entrega.</p>
+                </div>
+
+                <div class="bg-white/80 backdrop-blur-sm p-6 rounded-lg shadow-md" data-aos="fade-up" data-aos-delay="400">
+                    <h3 class="text-xl font-semibold mb-2 text-teal-600">¿Qué métodos de pago aceptan?</h3>
+                    <p class="text-gray-700">Aceptamos transferencias bancarias, pagos por QR y efectivo contra entrega.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Contact Section -->
     <section id="contact" class="py-16 bg-teal-50/5">
         <div class="container mx-auto px-4">
@@ -309,17 +344,20 @@
         // Initialize AOS and Feather Icons
         AOS.init();
         feather.replace();
+
         // Mobile menu toggle
         document.getElementById('menu-toggle').addEventListener('click', function() {
             const menu = document.getElementById('mobile-menu');
             menu.classList.toggle('hidden');
         });
+
         // Quantity controls
         function increment(id) {
             const input = document.getElementById(id);
             input.value = parseInt(input.value) + 1;
             updateOrderSummary();
         }
+
         function decrement(id) {
             const input = document.getElementById(id);
             if (parseInt(input.value) > 0) {
@@ -327,6 +365,7 @@
                 updateOrderSummary();
             }
         }
+
         // Update order summary
         function updateOrderSummary() {
             const products = [
@@ -334,14 +373,17 @@
                 { id: 'dishsoap', name: 'Lavavajillas', price: 12, bulkPrice: 10, bulkThreshold: 5 },
                 { id: 'floorcleaner', name: 'Limpia Pisos', price: 12, bulkPrice: 10, bulkThreshold: 5 }
             ];
+
             let summaryHTML = '';
             let total = 0;
+
             products.forEach(product => {
                 const quantity = parseInt(document.getElementById(product.id).value);
                 if (quantity > 0) {
                     const pricePerLiter = quantity >= product.bulkThreshold ? product.bulkPrice : product.price;
                     const subtotal = quantity * pricePerLiter;
                     total += subtotal;
+
                     summaryHTML += `
                         <div class="flex justify-between py-2 border-b border-gray-200">
                             <span>${product.name} (${quantity}L)</span>
@@ -350,12 +392,15 @@
                     `;
                 }
             });
+
             if (summaryHTML === '') {
                 summaryHTML = '<p class="text-gray-600">Selecciona los productos que deseas</p>';
             }
+
             document.getElementById('order-summary').innerHTML = summaryHTML;
             document.getElementById('total-amount').textContent = total;
         }
+
         // Send order via WhatsApp
         function sendOrder() {
             const products = [
@@ -363,8 +408,10 @@
                 { id: 'dishsoap', name: 'Lavavajillas' },
                 { id: 'floorcleaner', name: 'Limpia Pisos' }
             ];
+
             let message = '¡Hola PAMIL! Quiero hacer el siguiente pedido:\n\n';
             let hasProducts = false;
+
             products.forEach(product => {
                 const quantity = parseInt(document.getElementById(product.id).value);
                 if (quantity > 0) {
@@ -372,10 +419,12 @@
                     message += `- ${product.name}: ${quantity} litros\n`;
                 }
             });
+
             if (!hasProducts) {
                 alert('Por favor selecciona al menos un producto');
                 return;
             }
+
             message += '\nPor favor contáctenme para coordinar la entrega. ¡Gracias!';
             
             const sendWithNumber = (phone) => {
@@ -406,6 +455,7 @@
             `;
             document.body.appendChild(modal);
         }
+
         // Update summary when quantity changes
         document.querySelectorAll('input[type="number"]').forEach(input => {
             input.addEventListener('change', updateOrderSummary);
@@ -413,4 +463,3 @@
     </script>
 </body>
 </html>
-
