@@ -192,37 +192,29 @@
                         </div>
                     </div>
                 </div>
-                <!-- Producto: Jabón líquido para ropa -->
-<div class="bg-white/80 backdrop-blur-sm p-6 rounded-lg shadow-md text-center hover:shadow-lg transition-shadow duration-300" data-aos="fade-up">
-    <img src="https://images.unsplash.com/photo-1581579188871-45ea61f2a0f0?auto=format&fit=crop&w=400&q=80" alt="Jabón líquido para ropa" class="w-32 h-32 object-contain mx-auto mb-4 rounded-lg shadow-sm">
-    <h3 class="text-xl font-semibold mb-2 text-teal-600">Jabón líquido para ropa</h3>
-    <p class="text-gray-700 mb-4">El aliado perfecto para mantener tu ropa limpia, fresca y con un aroma agradable, cuidando los tejidos.</p>
-    <a href="https://wa.me/591XXXXXXXXX?text=Hola%20quiero%20más%20información%20sobre%20el%20Jabón%20líquido%20para%20ropa" target="_blank" class="inline-block bg-teal-600 text-white px-4 py-2 rounded-lg hover:bg-teal-700 transition-colors">
-        Consultar
-    </a>
+              <!-- Product: Jabón líquido para ropa -->
+<div class="product-card bg-teal-50/10 rounded-lg shadow-md overflow-hidden relative transition duration-300" data-aos="fade-up">
+    <div class="price-badge text-xs font-bold">
+        <div class="flex flex-col items-center">
+            <span>15 Bs/L</span>
+            <span class="text-xs">13 Bs +5L</span>
+        </div>
+    </div>
+    <img src="https://huggingface.co/spaces/nicoyura/pamil/resolve/main/images/jabon-ropa.jpg" alt="Jabón líquido para ropa" class="w-full h-48 object-cover">
+    <div class="p-6">
+        <h3 class="text-xl font-semibold mb-2 text-teal-600">Jabón Líquido para Ropa</h3>
+        <p class="text-gray-600 mb-4">Mantén tu ropa limpia, fresca y cuidada con nuestra fórmula que protege los tejidos.</p>
+        <div class="flex items-center justify-between">
+            <div class="flex items-center">
+                <button class="quantity-btn bg-gray-200 px-3 py-1 rounded-l" onclick="decrement('clothessoap')">-</button>
+                <input type="number" id="clothessoap" min="0" value="0" class="w-12 text-center border-t border-b border-gray-300 py-1">
+                <button class="quantity-btn bg-gray-200 px-3 py-1 rounded-r" onclick="increment('clothessoap')">+</button>
+                <span class="ml-2 text-sm font-medium text-teal-600">Litros</span>
+            </div>
+        </div>
+    </div>
 </div>
 
-            </div>
-
-            <!-- Order Summary -->
-            <div class="mt-12 bg-teal-100/20 border border-teal-200/40 rounded-lg p-6 max-w-2xl mx-auto shadow-sm" data-aos="fade-up">
-                <div class="bg-teal-500 text-white rounded-lg p-4 mb-6 text-center">
-                    <h3 class="text-lg font-bold">PRECIOS ESPECIALES</h3>
-                    <p class="text-sm">12 Bs por litro • 10 Bs por litro en compras mayores a 5 litros</p>
-                </div>
-                <h3 class="text-xl font-semibold mb-4 text-gray-800">Resumen de tu Pedido</h3>
-                <div id="order-summary" class="mb-4">
-                    <p class="text-gray-600">Selecciona los productos que deseas</p>
-                </div>
-                <div class="flex flex-col sm:flex-row justify-between items-center">
-                    <div class="mb-4 sm:mb-0">
-                        <h4 class="font-semibold text-gray-800">Total: <span id="total-amount">0</span> Bs</h4>
-                    </div>
-                    <button onclick="sendOrder()" class="bg-teal-500 hover:bg-teal-600 text-white font-semibold px-6 py-3 rounded-full shadow-lg transition flex items-center">
-                        <i data-feather="shopping-cart" class="mr-2"></i> Enviar Pedido por WhatsApp
-                    </button>
-                </div>
-            </div>
         </div>
     </section>
 
@@ -504,5 +496,6 @@
     </script>
 </body>
 </html>
+
 
 
