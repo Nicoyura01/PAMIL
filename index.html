@@ -192,32 +192,32 @@
                         </div>
                     </div>
                 </div>
-              <!-- Product: Jabón líquido para ropa -->
-<div class="product-card bg-teal-50/10 rounded-lg shadow-md overflow-hidden relative transition duration-300" data-aos="fade-up">
-    <div class="price-badge text-xs font-bold">
-        <div class="flex flex-col items-center">
-            <span>15 Bs/L</span>
-            <span class="text-xs">13 Bs +5L</span>
-        </div>
-    </div>
-    <img src="https://huggingface.co/spaces/nicoyura/pamil/resolve/main/images/jabon-ropa.jpg" alt="Jabón líquido para ropa" class="w-full h-48 object-cover">
-    <div class="p-6">
-        <h3 class="text-xl font-semibold mb-2 text-teal-600">Jabón Líquido para Ropa</h3>
-        <p class="text-gray-600 mb-4">Mantén tu ropa limpia, fresca y cuidada con nuestra fórmula que protege los tejidos.</p>
-        <div class="flex items-center justify-between">
-            <div class="flex items-center">
-                <button class="quantity-btn bg-gray-200 px-3 py-1 rounded-l" onclick="decrement('clothessoap')">-</button>
-                <input type="number" id="clothessoap" min="0" value="0" class="w-12 text-center border-t border-b border-gray-300 py-1">
-                <button class="quantity-btn bg-gray-200 px-3 py-1 rounded-r" onclick="increment('clothessoap')">+</button>
-                <span class="ml-2 text-sm font-medium text-teal-600">Litros</span>
-            </div>
-        </div>
-    </div>
-</div>
 
-        </div>
-    </section>
-  <!-- Order Summary -->
+                <!-- Product 4 -->
+                <div class="product-card bg-teal-50/10 rounded-lg shadow-md overflow-hidden relative transition duration-300" data-aos="fade-up" data-aos-delay="300">
+                    <div class="price-badge text-xs font-bold">
+                        <div class="flex flex-col items-center">
+                            <span>12 Bs/L</span>
+                            <span class="text-xs">10 Bs +5L</span>
+                        </div>
+                    </div>
+                    <img src="https://huggingface.co/spaces/nicoyura/pamil/resolve/main/images/jabol%20ropa.jpg" alt="Jabón Líquido para Ropa" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2 text-teal-600">Jabón Líquido para Ropa</h3>
+                        <p class="text-gray-600 mb-4">Elimina manchas difíciles y cuida tus prendas con su fórmula suave.</p>
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center">
+                                <button class="quantity-btn bg-gray-200 px-3 py-1 rounded-l" onclick="decrement('laundrysoap')">-</button>
+                                <input type="number" id="laundrysoap" min="0" value="0" class="w-12 text-center border-t border-b border-gray-300 py-1">
+                                <button class="quantity-btn bg-gray-200 px-3 py-1 rounded-r" onclick="increment('laundrysoap')">+</button>
+                                <span class="ml-2 text-sm font-medium text-teal-600">Litros</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Order Summary -->
             <div class="mt-12 bg-teal-100/20 border border-teal-200/40 rounded-lg p-6 max-w-2xl mx-auto shadow-sm" data-aos="fade-up">
                 <div class="bg-teal-500 text-white rounded-lg p-4 mb-6 text-center">
                     <h3 class="text-lg font-bold">PRECIOS ESPECIALES</h3>
@@ -426,22 +426,27 @@
         }
 
         // Send order via WhatsApp
-         function sendOrder() {
+        function sendOrder() {
             const products = [
-                { id: 'handsoap', name: 'Jabón Líquido de Mano' },
-                { id: 'dishsoap', name: 'Lavavajillas' },
-                { id: 'floorcleaner', name: 'Limpia Pisos' },
-                 { id: 'Laundrysoap', name: 'Jabón Líquido para Ropa' }
+                { id: 'handsoap', name: 'Jabón Líquido de Mano', price: 14, bulkPrice: 65, bulkThreshold: 5 },
+                { id: 'dishsoap', name: 'Lavavajillas', price: 12, bulkPrice: 58, bulkThreshold: 5 },
+                { id: 'floorcleaner', name: 'Limpia Pisos', price: 11, bulkPrice: 50, bulkThreshold: 5 },
+                { id: 'laundrysoap', name: 'Jabón Líquido para Ropa', price: 13, bulkPrice: 60, bulkThreshold: 5 }
             ];
 
             let message = '¡Hola PAMIL! Quiero hacer el siguiente pedido:\n\n';
             let hasProducts = false;
+            let total = 0;
 
             products.forEach(product => {
                 const quantity = parseInt(document.getElementById(product.id).value);
                 if (quantity > 0) {
                     hasProducts = true;
-                    message += `- ${product.name}: ${quantity} litros\n`;
+                    const pricePerLiter = quantity >= product.bulkThreshold ? product.bulkPrice/quantity : product.price;
+                    const subtotal = quantity >= product.bulkThreshold ? product.bulkPrice : quantity * product.price;
+                    total += subtotal;
+                    
+                    message += `- ${product.name}: ${quantity}L (${subtotal} Bs)\n`;
                 }
             });
 
@@ -450,29 +455,26 @@
                 return;
             }
 
-            message += '\nPor favor contáctenme para coordinar la entrega. ¡Gracias!';
-            
-            const sendWithNumber = (phone) => {
-                window.open(`https://wa.me/${phone}?text=${encodeURIComponent(message)}`, '_blank');
-                modal.remove();
-            };
-            
+            message += `\nTotal: ${total} Bs\n\n`;
+            message += 'Por favor contáctenme para coordinar la entrega. ¡Gracias!';
+
+            // Create modal to select WhatsApp number
             const modal = document.createElement('div');
             modal.className = 'fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50';
             modal.innerHTML = `
                 <div class="bg-white rounded-lg p-6 max-w-sm w-full">
-                    <h3 class="text-xl font-semibold mb-4">Selecciona un número para contactar</h3>
+                    <h3 class="text-xl font-semibold mb-4">Selecciona un número para enviar tu pedido</h3>
                     <div class="space-y-3">
-                        <button onclick="sendWithNumber('59169523269')" 
+                        <button onclick="window.open('https://wa.me/59169523269?text=${encodeURIComponent(message)}', '_blank')" 
                                 class="w-full bg-green-500 hover:bg-green-600 text-white font-semibold px-4 py-2 rounded-full transition">
                             Enviar a 69523269
                         </button>
-                        <button onclick="sendWithNumber('59175907657')" 
+                        <button onclick="window.open('https://wa.me/59175907657?text=${encodeURIComponent(message)}', '_blank')" 
                                 class="w-full bg-green-500 hover:bg-green-600 text-white font-semibold px-4 py-2 rounded-full transition">
                             Enviar a 75907657
                         </button>
                         <button onclick="this.parentNode.parentNode.parentNode.remove()" 
-                                class="w-full bg-teal-200 hover:bg-teal-300 text-teal-800 font-semibold px-4 py-2 rounded-full transition">
+                                class="w-full bg-gray-200 hover:bg-gray-300 text-gray-800 font-semibold px-4 py-2 rounded-full transition">
                             Cancelar
                         </button>
                     </div>
@@ -488,9 +490,3 @@
     </script>
 </body>
 </html>
-
-
-
-
-
-
