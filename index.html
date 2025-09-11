@@ -217,6 +217,27 @@
 
         </div>
     </section>
+                <!-- Order Summary -->
+            <div class="mt-12 bg-teal-100/20 border border-teal-200/40 rounded-lg p-6 max-w-2xl mx-auto shadow-sm" data-aos="fade-up">
+                <div class="bg-teal-500 text-white rounded-lg p-4 mb-6 text-center">
+                    <h3 class="text-lg font-bold">PRECIOS ESPECIALES</h3>
+                    <p class="text-sm">Desde 11 Bs por litro • Descuentos en compras mayores a 5 litros</p>
+                </div>
+                <h3 class="text-xl font-semibold mb-4 text-gray-800">Resumen de tu Pedido</h3>
+                <div id="order-summary" class="mb-4">
+                    <p class="text-gray-600">Selecciona los productos que deseas</p>
+                </div>
+                <div class="flex flex-col sm:flex-row justify-between items-center">
+                    <div class="mb-4 sm:mb-0">
+                        <h4 class="font-semibold text-gray-800">Total: <span id="total-amount">0</span> Bs</h4>
+                    </div>
+                    <button onclick="sendOrder()" class="bg-teal-500 hover:bg-teal-600 text-white font-semibold px-6 py-3 rounded-full shadow-lg transition flex items-center">
+                        <i data-feather="shopping-cart" class="mr-2"></i> Enviar Pedido por WhatsApp
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <!-- About Us Section -->
     <section id="about" class="py-16 bg-teal-50/10">
@@ -498,6 +519,7 @@
     </script>
 </body>
 </html>
+
 
 
 
