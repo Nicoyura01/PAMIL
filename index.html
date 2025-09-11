@@ -399,12 +399,13 @@
             }
         }
 
-        // Update order summary
+          // Update order summary
         function updateOrderSummary() {
             const products = [
-                { id: 'handsoap', name: 'Jabón Líquido de Mano', price: 12, bulkPrice: 10, bulkThreshold: 5 },
-                { id: 'dishsoap', name: 'Lavavajillas', price: 12, bulkPrice: 10, bulkThreshold: 5 },
-                { id: 'floorcleaner', name: 'Limpia Pisos', price: 12, bulkPrice: 10, bulkThreshold: 5 }
+                { id: 'handsoap', name: 'Jabón Líquido de Mano', price: 14, bulkPrice: 13, bulkThreshold: 5 },
+                { id: 'dishsoap', name: 'Lavavajillas', price: 12, bulkPrice: 11.6, bulkThreshold: 5 },
+                { id: 'floorcleaner', name: 'Limpia Pisos', price: 11, bulkPrice: 10, bulkThreshold: 5 },
+                { id: 'laundrysoap', name: 'Jabón Líquido para Ropa', price: 13, bulkPrice: 12, bulkThreshold: 5 }
             ];
 
             let summaryHTML = '';
@@ -439,7 +440,8 @@
             const products = [
                 { id: 'handsoap', name: 'Jabón Líquido de Mano' },
                 { id: 'dishsoap', name: 'Lavavajillas' },
-                { id: 'floorcleaner', name: 'Limpia Pisos' }
+                { id: 'floorcleaner', name: 'Limpia Pisos' },
+                 { id: 'Laundrysoap', name: 'Jabón Líquido para Ropa' }
             ];
 
             let message = '¡Hola PAMIL! Quiero hacer el siguiente pedido:\n\n';
@@ -496,6 +498,7 @@
     </script>
 </body>
 </html>
+
 
 
 
