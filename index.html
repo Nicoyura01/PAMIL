@@ -67,6 +67,7 @@
             <a href="#about" class="hover:text-blue-200 transition">Quiénes somos</a>
             <a href="#how-to" class="hover:text-blue-200 transition">Cómo comprar</a>
             <a href="#faq" class="hover:text-blue-200 transition">FAQ</a>
+            <a href="#reviews" class="hover:text-blue-200 transition">Reseñas</a>
             <a href="#contact" class="hover:text-blue-200 transition">Contacto</a>
         </div>
     </div>
@@ -221,7 +222,7 @@
             <div class="mt-12 bg-teal-100/20 border border-teal-200/40 rounded-lg p-6 max-w-2xl mx-auto shadow-sm" data-aos="fade-up">
                 <div class="bg-teal-500 text-white rounded-lg p-4 mb-6 text-center">
                     <h3 class="text-lg font-bold">PRECIOS ESPECIALES</h3>
-                    <p class="text-sm">Desde 11 Bs por litro • Descuentos en compras mayores a 5 litros</p>
+                    <p class="text-sm">• Descuentos en compras mayores a 5 litros •</p>
                 </div>
                 <h3 class="text-xl font-semibold mb-4 text-gray-800">Resumen de tu Pedido</h3>
                 <div id="order-summary" class="mb-4">
@@ -348,6 +349,67 @@
         </div>
     </section>
 
+    <!-- Reviews Section -->
+    <section id="reviews" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12 text-teal-600">Reseñas de Clientes</h2>
+            
+            <div class="max-w-2xl mx-auto">
+                <!-- Review Form -->
+                <div class="bg-teal-50/30 p-6 rounded-lg shadow-md mb-8">
+                    <h3 class="text-xl font-semibold mb-4 text-teal-600">Deja tu reseña</h3>
+                    <form id="review-form">
+                        <div class="mb-4">
+                            <label class="block text-gray-700 mb-2">Tu nombre</label>
+                            <input type="text" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500" required>
+                        </div>
+                        <div class="mb-4">
+                            <label class="block text-gray-700 mb-2">Calificación</label>
+                            <div class="flex space-x-1" id="rating-stars">
+                                <span class="text-2xl cursor-pointer text-gray-300 hover:text-yellow-400" data-rating="1">★</span>
+                                <span class="text-2xl cursor-pointer text-gray-300 hover:text-yellow-400" data-rating="2">★</span>
+                                <span class="text-2xl cursor-pointer text-gray-300 hover:text-yellow-400" data-rating="3">★</span>
+                                <span class="text-2xl cursor-pointer text-gray-300 hover:text-yellow-400" data-rating="4">★</span>
+                                <span class="text-2xl cursor-pointer text-gray-300 hover:text-yellow-400" data-rating="5">★</span>
+                                <input type="hidden" id="selected-rating" name="rating" value="">
+                            </div>
+                        </div>
+                        <div class="mb-4">
+                            <label class="block text-gray-700 mb-2">Comentario</label>
+                            <textarea rows="3" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500" required></textarea>
+                        </div>
+                        <button type="submit" class="bg-teal-500 hover:bg-teal-600 text-white font-semibold px-6 py-2 rounded-full shadow-lg transition">
+                            Enviar Reseña
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Reviews List -->
+                <div id="reviews-list" class="space-y-6">
+                    <div class="bg-white p-6 rounded-lg shadow-md border border-gray-100">
+                        <div class="flex items-center mb-2">
+                            <div class="text-yellow-400 flex">
+                                ★★★★★
+                            </div>
+                            <span class="ml-2 text-gray-600">- María G.</span>
+                        </div>
+                        <p class="text-gray-700">"Los productos son excelentes, especialmente el jabón para manos. ¡Deja un aroma delicioso y no reseca la piel!"</p>
+                    </div>
+                    
+                    <div class="bg-white p-6 rounded-lg shadow-md border border-gray-100">
+                        <div class="flex items-center mb-2">
+                            <div class="text-yellow-400 flex">
+                                ★★★★☆
+                            </div>
+                            <span class="ml-2 text-gray-600">- Carlos R.</span>
+                        </div>
+                        <p class="text-gray-700">"Muy buen lavavajillas, quita toda la grasa. Solo espero que saquen más aromas pronto."</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Footer -->
     <footer class="bg-gray-800 text-white py-8">
         <div class="container mx-auto px-4">
@@ -367,6 +429,76 @@
         // Initialize AOS and Feather Icons
         AOS.init();
         feather.replace();
+
+        // Star rating interaction
+        document.addEventListener('DOMContentLoaded', function() {
+            const stars = document.querySelectorAll('#rating-stars span');
+            const ratingInput = document.getElementById('selected-rating');
+            
+            stars.forEach(star => {
+                star.addEventListener('click', function() {
+                    const rating = parseInt(this.getAttribute('data-rating'));
+                    ratingInput.value = rating;
+                    
+                    // Update stars display
+                    stars.forEach((s, index) => {
+                        if (index < rating) {
+                            s.classList.add('text-yellow-400');
+                            s.classList.remove('text-gray-300');
+                        } else {
+                            s.classList.add('text-gray-300');
+                            s.classList.remove('text-yellow-400');
+                        }
+                    });
+                });
+                
+                star.addEventListener('mouseover', function() {
+                    const hoverRating = parseInt(this.getAttribute('data-rating'));
+                    stars.forEach((s, index) => {
+                        if (index < hoverRating) {
+                            s.classList.add('text-yellow-400');
+                            s.classList.remove('text-gray-300');
+                        }
+                    });
+                });
+                
+                star.addEventListener('mouseout', function() {
+                    const currentRating = parseInt(ratingInput.value) || 0;
+                    stars.forEach((s, index) => {
+                        if (index >= currentRating) {
+                            s.classList.add('text-gray-300');
+                            s.classList.remove('text-yellow-400');
+                        }
+                    });
+                });
+            });
+        });
+
+        // Form submission
+        document.getElementById('review-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const formData = new FormData(this);
+            const rating = formData.get('rating');
+            const name = formData.get('name');
+            const comment = formData.get('comment');
+            
+            // In a real app, you would send this to a server
+            const reviewHTML = `
+                <div class="bg-white p-6 rounded-lg shadow-md border border-gray-100">
+                    <div class="flex items-center mb-2">
+                        <div class="text-yellow-400 flex">
+                            ${'★'.repeat(rating)}${'☆'.repeat(5-rating)}
+                        </div>
+                        <span class="ml-2 text-gray-600">- ${name}</span>
+                    </div>
+                    <p class="text-gray-700">"${comment}"</p>
+                </div>
+            `;
+            
+            document.getElementById('reviews-list').insertAdjacentHTML('afterbegin', reviewHTML);
+            this.reset();
+            alert('¡Gracias por tu reseña!');
+        });
 
         // Mobile menu toggle
         document.getElementById('menu-toggle').addEventListener('click', function() {
